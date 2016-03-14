@@ -45,6 +45,6 @@ public class Main {
         nums = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         System.out.println("nums sum is:" + nums.stream().reduce((sum, item) -> sum + item).get());
         System.out.println("nums sum is:" + nums.stream().reduce(0,(sum, item) -> sum + item));
-        System.out.println("nums sum is:" + nums.stream().count());
+        System.out.println("nums count is:" + nums.stream().count());
     }
 }
