@@ -29,5 +29,15 @@ public class Main {
         List<Integer> nums = Arrays.asList(1, 1, null, 2, 3, 4, null, 5, 6, 7, 8, 9, 10);
         System.out.println("sum is:" + nums.stream().filter(integer -> integer != null).distinct()
                 .mapToInt(value -> value * 2).peek(System.out::println).limit(4).sum());
+
+
+        nums = Arrays.asList(1, 1, null, 2, 3, 4, null, 5, 6, 7, 8, 9, 10);
+//        List<Integer> numsWithoutNull = nums.stream().filter(num -> num != null).collect(() -> new ArrayList<Integer>(),
+//                (integers, item) -> integers.add(item),
+//                (integers, integers2) -> integers.addAll(integers2));
+//        List<Integer> numWithOutNull = nums.stream().filter(num -> num != null).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+        List<Integer> numWithOutNull = nums.stream().filter(num -> num != null).collect(Collectors.toList());
+        numWithOutNull.forEach(System.out::print);
+        System.out.println();
     }
 }
