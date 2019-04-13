@@ -73,7 +73,7 @@ public class NIOClient {
     private void read(SelectionKey key) throws Exception {
         SocketChannel channel = (SocketChannel) key.channel();
         // 分配缓冲区
-        ByteBuffer buffer = ByteBuffer.allocate(10);
+        ByteBuffer buffer = ByteBuffer.allocate(50);
         channel.read(buffer);
         byte[] data = buffer.array();
         String msg = new String(data).trim();

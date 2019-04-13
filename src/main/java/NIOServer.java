@@ -76,7 +76,7 @@ public class NIOServer {
         // 服务器可读消息，得到事件发生的socket通道
         SocketChannel channel = (SocketChannel) key.channel();
         // 读取的缓冲区
-        ByteBuffer buffer = ByteBuffer.allocate(10);
+        ByteBuffer buffer = ByteBuffer.allocate(50);
         channel.read(buffer);
         byte[] data = buffer.array();
         String msg = new String(data).trim();
