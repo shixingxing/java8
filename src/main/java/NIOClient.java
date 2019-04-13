@@ -12,11 +12,12 @@ public class NIOClient {
 
     /**
      * 获得一个Socket通道，并对该通道做一些初始化的工作
-     * @param ip 连接服务器ip
+     *
+     * @param ip   连接服务器ip
      * @param port 连接服务器端口
      * @throws IOException
      */
-    public void initClient(String ip, int port) throws IOException {
+    public void initClient(int port) throws IOException {
         // 获得一个Socket通道
         SocketChannel channel = SocketChannel.open();
         // 设置通道为非阻塞
@@ -25,13 +26,14 @@ public class NIOClient {
         this.selector = Selector.open();
         // 用channel.finishConnect();才能完成连接
         // 客户端连接服务器,其实方法执行并没有实现连接，需要在listen()方法中调
-        channel.connect(new InetSocketAddress(ip, port));
+        channel.connect(new InetSocketAddress(port));
         // 将通道管理器和该通道绑定，并为该通道注册SelectionKey.OP_CONNECT事件
         channel.register(selector, SelectionKey.OP_CONNECT);
     }
 
     /**
      * 采用轮询的方式监听selector上是否有需要处理的事件，如果有，则进行处理
+     *
      * @throws Exception
      */
     @SuppressWarnings("unchecked")
@@ -84,11 +86,12 @@ public class NIOClient {
 
     /**
      * 启动客户端测试
+     *
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
         NIOClient client = new NIOClient();
-        client.initClient("localhost", 8989);
+        client.initClient(8989);
         client.listen();
     }
 }
