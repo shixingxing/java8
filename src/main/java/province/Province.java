@@ -12,7 +12,7 @@ public class Province {
         List<ProvinceVO> list = new ArrayList<>();
 
         Map<String, String> province = new HashMap<>();
-        Map<String,List<ProvinceVO.CityVO>> city= new HashMap<>();
+        Map<String, List<ProvinceVO.CityVO>> city = new HashMap<>();
 
         File file1 = new File("C:\\Users\\peter\\IdeaProjects\\java8\\src\\main\\java\\province\\provinces.csv");
         File file2 = new File("C:\\Users\\peter\\IdeaProjects\\java8\\src\\main\\java\\province\\regencies.csv");
@@ -38,8 +38,8 @@ public class Province {
                 String code = pStr[1];
                 String cityStr = pStr[2];
 
-                if (!city.containsKey(code)){
-                    city.put(code,new ArrayList<>());
+                if (!city.containsKey(code)) {
+                    city.put(code, new ArrayList<>());
                 }
 
                 city.get(code).add(new ProvinceVO.CityVO(cityStr));
@@ -48,7 +48,7 @@ public class Province {
 
 
             Iterator<String> iterator = province.keySet().iterator();
-            while (iterator.hasNext()){
+            while (iterator.hasNext()) {
 
                 String next = iterator.next();
                 ProvinceVO vo = new ProvinceVO();
